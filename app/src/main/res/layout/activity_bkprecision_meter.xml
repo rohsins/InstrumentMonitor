@@ -1,0 +1,125 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.instrumentmonitor.rohsins.instrumentmonitor.BKPrecisionMeter">
+
+    <TextView android:id="@+id/textViewParam0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textParam"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"/>
+
+    <TextView android:id="@+id/textViewValue0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textValue"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="0dp"/>
+
+    <TextView android:id="@+id/textViewParam1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textParam1"
+        android:textSize="18sp"
+        android:layout_below="@id/textViewParam0"
+        android:layout_marginTop="10dp"/>
+
+    <TextView android:id="@+id/textViewValue1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textValueDefault"
+        android:textSize="18sp"
+        android:layout_marginLeft="220dp"
+        android:layout_below="@id/textViewValue0"
+        android:layout_marginTop="10dp"/>
+
+    <TextView android:id="@+id/textViewParam2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textParam2"
+        android:textSize="18sp"
+        android:layout_below="@id/textViewParam1"/>
+
+    <TextView android:id="@+id/textViewValue2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textValueDefault"
+        android:textSize="18sp"
+        android:layout_marginLeft="220dp"
+        android:layout_below="@id/textViewValue1"/>
+
+    <TextView android:id="@+id/textViewParam3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textParam3"
+        android:textSize="18sp"
+        android:layout_below="@id/textViewParam2"/>
+
+    <TextView android:id="@+id/textViewValue3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textValueDefault"
+        android:textSize="18sp"
+        android:layout_marginLeft="220dp"
+        android:layout_below="@id/textViewValue2"/>
+
+    <TextView android:id="@+id/textViewParam4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textParam4"
+        android:textSize="18sp"
+        android:layout_below="@id/textViewParam3"/>
+
+    <TextView android:id="@+id/textViewValue4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textValueDefault"
+        android:textSize="18sp"
+        android:layout_marginLeft="220dp"
+        android:layout_below="@id/textViewValue3"/>
+
+    <TextView android:id="@+id/textViewParam5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textParam5"
+        android:textSize="18sp"
+        android:layout_below="@id/textViewParam4"/>
+
+    <TextView android:id="@+id/textViewValue5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textValueDefault"
+        android:textSize="18sp"
+        android:layout_marginLeft="220dp"
+        android:layout_below="@id/textViewValue4"/>
+
+    <TextView android:id="@+id/textViewSync"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textViewSync"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="30dp"/>
+
+    <Switch
+        android:id="@+id/syncSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_style"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="22dp"
+        android:clickable="true"/>
+
+</RelativeLayout>
+
