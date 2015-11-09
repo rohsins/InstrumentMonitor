@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">InstrumentMonitor</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title">InstrumentMonitor</string>
+    <string name="buttonOne">BK Precision Meter</string>
+    <string name="title_activity_bkprecision_meter">BKPrecisionMeter</string>
+    <string name="textParam">Param</string>
+    <string name="textParam1">Voltage</string>
+    <string name="textParam2">Current</string>
+    <string name="textParam3">Resistance</string>
+    <string name="textParam4">Inductance</string>
+    <string name="textParam5">Capacitance</string>
+    <string name="textValue">Value</string>
+    <string name="textViewSync">Sync</string>
+    <string name="textValueDefault">0.0</string>
+    <string name="settingsButton1">Apply (OK)</string>
+    <string name="ipAddressSettings">Enter Server IP-Address</string>
+    <string name="defaultIp">192.168.x.x</string>
+    <string name="title_activity_settings">Settings</string>
+</resources>
