@@ -13,6 +13,9 @@
     <string name="textParam5">Capacitance</string>
     <string name="textValue">Value</string>
     <string name="textViewSync">Sync</string>
+    <string name="updateRate">Update Rate</string>
+    <string name="editTextdefault">0.0</string>
+    <string name="textViewUnit">Hz</string>
     <string name="textValueDefault">0.0</string>
     <string name="settingsButton1">Apply (OK)</string>
     <string name="ipAddressSettings">Enter Server IP-Address</string>

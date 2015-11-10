@@ -25,7 +25,6 @@ public class BKPrecisionMeter extends Sockets {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bkprecision_meter);
 
-        on_create_func();
 
         textViewVoltage = (TextView) findViewById(R.id.textViewValue1);
         textViewCurrent = (TextView) findViewById(R.id.textViewValue2);
@@ -35,6 +34,7 @@ public class BKPrecisionMeter extends Sockets {
         sync = (Switch) findViewById(R.id.syncSwitch);
 
         SharedPreferences settings = getSharedPreferences("msettings",0);
+        on_create_func();
         sync.setChecked(settings.getBoolean("SYNCSWITCH", false));
 
         sync.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

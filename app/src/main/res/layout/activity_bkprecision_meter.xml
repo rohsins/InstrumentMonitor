@@ -21,7 +21,7 @@
         android:text="@string/textValue"
         android:textStyle="bold"
         android:textSize="22sp"
-        android:layout_marginLeft="220dp"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="0dp"/>
 
     <TextView android:id="@+id/textViewParam1"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:text="@string/textValueDefault"
         android:textSize="18sp"
-        android:layout_marginLeft="220dp"
+        android:layout_alignParentRight="true"
         android:layout_below="@id/textViewValue0"
         android:layout_marginTop="10dp"/>
 
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:text="@string/textValueDefault"
         android:textSize="18sp"
-        android:layout_marginLeft="220dp"
+        android:layout_alignParentRight="true"
         android:layout_below="@id/textViewValue1"/>
 
     <TextView android:id="@+id/textViewParam3"
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:text="@string/textValueDefault"
         android:textSize="18sp"
-        android:layout_marginLeft="220dp"
+        android:layout_alignParentRight="true"
         android:layout_below="@id/textViewValue2"/>
 
     <TextView android:id="@+id/textViewParam4"
@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:text="@string/textValueDefault"
         android:textSize="18sp"
-        android:layout_marginLeft="220dp"
+        android:layout_alignParentRight="true"
         android:layout_below="@id/textViewValue3"/>
 
     <TextView android:id="@+id/textViewParam5"
@@ -98,7 +98,7 @@
         android:layout_height="wrap_content"
         android:text="@string/textValueDefault"
         android:textSize="18sp"
-        android:layout_marginLeft="220dp"
+        android:layout_alignParentRight="true"
         android:layout_below="@id/textViewValue4"/>
 
     <TextView android:id="@+id/textViewSync"
@@ -121,5 +121,30 @@
         android:layout_marginBottom="22dp"
         android:clickable="true"/>
 
+    <TextView android:id="@+id/textViewUpdateRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/updateRate"
+        android:textSize="19sp"
+        android:textStyle="italic"
+        android:layout_above="@id/textViewSync"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText android:id="@+id/editTextUpdateRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/editTextdefault"
+        android:layout_above="@id/syncSwitch"
+        android:layout_marginRight="22dp"
+        android:layout_alignParentRight="true"/>
+
+    <TextView android:id="@+id/textViewUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textViewUnit"
+        android:textSize="18sp"
+        android:layout_marginBottom="13dp"
+        android:layout_above="@id/syncSwitch"
+        android:layout_alignParentRight="true"/>
 </RelativeLayout>
 
