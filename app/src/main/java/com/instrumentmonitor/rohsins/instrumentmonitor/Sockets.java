@@ -3,6 +3,7 @@ package com.instrumentmonitor.rohsins.instrumentmonitor;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.DataInputStream;
@@ -17,6 +18,8 @@ public class Sockets extends Activity {
     public volatile int Port;
     String ipAddressPort[];
     String inputIpAddressPort;
+    String response = "";
+    TextView textViewInductance;
 
     public void on_create_func() {
         SharedPreferences settings = getSharedPreferences("msettings",0);
@@ -34,13 +37,14 @@ public class Sockets extends Activity {
 
         String dstAddress;
         int dstPort;
-        String response = "";
+        String errorResponse = "";
         String msgToServer;
 
         MyClientTask(String addr, int port, String msgTo) {
             dstAddress = addr;
             dstPort = port;
             msgToServer = msgTo;
+            textViewInductance = (TextView) findViewById(R.id.textViewValue4);
         }
 
         @Override
@@ -65,10 +69,10 @@ public class Sockets extends Activity {
 
             } catch (UnknownHostException e) {
                 e.printStackTrace();
-                response = "UnknownHostException: " + e.toString();
+                errorResponse = "UnknownHostException: " + e.toString();
             } catch (IOException e) {
                 e.printStackTrace();
-                response = "IOException: " + e.toString();
+                errorResponse = "IOException: " + e.toString();
             } finally {
                 if (socket != null) {
                     try {
@@ -100,9 +104,10 @@ public class Sockets extends Activity {
         @Override
         protected void onPostExecute(Void result) {
 //			editText.setText(response);
-            if(!response.equals( "IOException: java.io.EOFException")) {
-                Toast.makeText(Sockets.this, response, Toast.LENGTH_SHORT).show();
+            if(!errorResponse.equals( "IOException: java.io.EOFException") && !errorResponse.equals("")) {
+                Toast.makeText(Sockets.this, errorResponse, Toast.LENGTH_SHORT).show();
             }
+            textViewInductance.setText(response);
             super.onPostExecute(result);
         }
 
