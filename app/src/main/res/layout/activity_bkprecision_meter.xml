@@ -134,6 +134,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/editTextdefault"
+        android:inputType="numberDecimal"
         android:layout_above="@id/syncSwitch"
         android:layout_marginRight="22dp"
         android:layout_alignParentRight="true"/>

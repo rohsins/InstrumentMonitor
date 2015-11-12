@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class BKPrecisionMeter extends Sockets {
     TextView textViewInductance;
     TextView textViewCapacitance;
     Switch sync;
+    EditText editTextUpdateRate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +34,16 @@ public class BKPrecisionMeter extends Sockets {
         textViewInductance = (TextView) findViewById(R.id.textViewValue4);
         textViewCapacitance = (TextView) findViewById(R.id.textViewValue5);
         sync = (Switch) findViewById(R.id.syncSwitch);
+        editTextUpdateRate = (EditText) findViewById(R.id.editTextUpdateRate);
 
         SharedPreferences settings = getSharedPreferences("msettings",0);
         on_create_func();
+        editTextUpdateRate.setText(String.valueOf(settings.getInt("UPDATERATE", 1)));
+        if (!settings.getBoolean("SYNCSWITCH", false)) {
+            editTextUpdateRate.setEnabled(true);
+        } else if (settings.getBoolean("SYNCSWITCH", false)) {
+            editTextUpdateRate.setEnabled(false);
+        }
         sync.setChecked(settings.getBoolean("SYNCSWITCH", false));
 
         sync.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -42,18 +51,28 @@ public class BKPrecisionMeter extends Sockets {
                                          boolean isChecked) {
                 SharedPreferences settings = getSharedPreferences("msettings", 0);
                 SharedPreferences.Editor editor = settings.edit();
+                editor.putInt("UPDATERATE", Integer.parseInt(editTextUpdateRate.getText().toString()));
                 editor.putBoolean("SYNCSWITCH", sync.isChecked());
                 editor.commit();
                 //sync.setEnabled(settings.getBoolean("SYNCSWITCH", false));
-                if (!settings.getBoolean("SYNCSWITCH", true)) {
+                if (!settings.getBoolean("SYNCSWITCH", false)) {
+                    editTextUpdateRate.setEnabled(true);
                     exchangeData("SYNCOFF");
                     textViewVoltage.setText("SyncOff");
-                } else if (settings.getBoolean("SYNCSWITCH", true)) {
+                } else if (settings.getBoolean("SYNCSWITCH", false)) {
+                    editTextUpdateRate.setEnabled(false);
                     exchangeData("SYNCON");
                     textViewVoltage.setText("SyncOn");
                 }
             }
         });
+    }
+
+    @Override
+    public void onOptionsMenuClosed(Menu menu) {
+        super.onOptionsMenuClosed(menu);
+        textViewVoltage.setText("Syti");
+        on_create_func();
     }
 
     @Override
