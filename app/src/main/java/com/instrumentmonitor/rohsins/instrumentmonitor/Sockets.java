@@ -110,9 +110,7 @@ public class Sockets extends Activity {
             textViewInductance.setText(response);
             super.onPostExecute(result);
         }
-
     }
-
 
     public void exchangeData(String tMsg) {
 
