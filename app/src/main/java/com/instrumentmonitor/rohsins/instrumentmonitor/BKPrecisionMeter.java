@@ -73,7 +73,6 @@ public class BKPrecisionMeter extends Sockets {
         super.onOptionsMenuClosed(menu);
         textViewVoltage.setText("Syti");
         //ok this is test comment for git push
-        on_create_func();
     }
 
     @Override
