@@ -3,6 +3,9 @@ package com.instrumentmonitor.rohsins.instrumentmonitor;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,6 +13,9 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class BKPrecisionMeter extends Sockets {
@@ -22,11 +28,49 @@ public class BKPrecisionMeter extends Sockets {
     Switch sync;
     EditText editTextUpdateRate;
 
+    int i;
+
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            textViewResistance.setText(String.valueOf(i));
+            i++;
+        }
+    };
+
+    Handler handler = new Handler();
+    TimerTask timerTask;
+    Timer timer;
+
+    public void startTransfer(int period) {
+        try {
+            timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    try {
+                        handler.post(runnable);
+                    } catch (Exception e ) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            timer = new Timer("updateTimer");
+            timer.scheduleAtFixedRate(timerTask, 1, period);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void stopTransfer() {
+        timerTask.cancel();
+        timer.purge();
+        timer.cancel();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bkprecision_meter);
-
 
         textViewVoltage = (TextView) findViewById(R.id.textViewValue1);
         textViewCurrent = (TextView) findViewById(R.id.textViewValue2);
@@ -36,7 +80,7 @@ public class BKPrecisionMeter extends Sockets {
         sync = (Switch) findViewById(R.id.syncSwitch);
         editTextUpdateRate = (EditText) findViewById(R.id.editTextUpdateRate);
 
-        SharedPreferences settings = getSharedPreferences("msettings",0);
+        SharedPreferences settings = getSharedPreferences("msettings", 0);
         on_create_func();
         editTextUpdateRate.setText(String.valueOf(settings.getInt("UPDATERATE", 1)));
         if (!settings.getBoolean("SYNCSWITCH", false)) {
@@ -59,10 +103,12 @@ public class BKPrecisionMeter extends Sockets {
                     editTextUpdateRate.setEnabled(true);
                     exchangeData("SYNCOFF");
                     textViewVoltage.setText("SyncOff");
+                    stopTransfer();
                 } else if (settings.getBoolean("SYNCSWITCH", false)) {
                     editTextUpdateRate.setEnabled(false);
                     exchangeData("SYNCON");
                     textViewVoltage.setText("SyncOn");
+                    startTransfer(settings.getInt("UPDATERATE", 1000));
                 }
             }
         });
@@ -72,7 +118,6 @@ public class BKPrecisionMeter extends Sockets {
     public void onOptionsMenuClosed(Menu menu) {
         super.onOptionsMenuClosed(menu);
         textViewVoltage.setText("Syti");
-        //homebrew done;git
     }
 
     @Override
