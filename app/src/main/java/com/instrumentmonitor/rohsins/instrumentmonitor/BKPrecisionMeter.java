@@ -4,11 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -35,6 +32,7 @@ public class BKPrecisionMeter extends Sockets {
         public void run() {
             textViewResistance.setText(String.valueOf(i));
             i++;
+            exchangeData("sendMeAllParameters");
         }
     };
 
@@ -101,12 +99,12 @@ public class BKPrecisionMeter extends Sockets {
                 //sync.setEnabled(settings.getBoolean("SYNCSWITCH", false));
                 if (!settings.getBoolean("SYNCSWITCH", false)) {
                     editTextUpdateRate.setEnabled(true);
-                    exchangeData("SYNCOFF");
+//                    exchangeData("SYNCOFF");
                     textViewVoltage.setText("SyncOff");
                     stopTransfer();
                 } else if (settings.getBoolean("SYNCSWITCH", false)) {
                     editTextUpdateRate.setEnabled(false);
-                    exchangeData("SYNCON");
+//                    exchangeData("SYNCON");
                     textViewVoltage.setText("SyncOn");
                     startTransfer(settings.getInt("UPDATERATE", 1000));
                 }

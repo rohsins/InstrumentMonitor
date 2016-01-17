@@ -19,7 +19,11 @@ public class Sockets extends Activity {
     String ipAddressPort[];
     String inputIpAddressPort;
     String response = "";
+    TextView textViewVoltage;
+    TextView textViewCurrent;
+    TextView textViewResistance;
     TextView textViewInductance;
+    TextView textViewCapacitance;
 
     public void on_create_func() {
         SharedPreferences settings = getSharedPreferences("msettings",0);
@@ -44,7 +48,11 @@ public class Sockets extends Activity {
             dstAddress = addr;
             dstPort = port;
             msgToServer = msgTo;
+            textViewVoltage = (TextView) findViewById(R.id.textViewValue1);
+            textViewCurrent = (TextView) findViewById(R.id.textViewValue2);
+            textViewResistance = (TextView) findViewById(R.id.textViewValue3);
             textViewInductance = (TextView) findViewById(R.id.textViewValue4);
+            textViewCapacitance = (TextView) findViewById(R.id.textViewValue5);
         }
 
         @Override
@@ -108,6 +116,26 @@ public class Sockets extends Activity {
                 Toast.makeText(Sockets.this, errorResponse, Toast.LENGTH_SHORT).show();
             }
             textViewInductance.setText(response);
+
+            String switchCheck[] = null;
+            switchCheck = response.split("-");
+            switch (switchCheck[0]) {
+                case "voltage":
+                    textViewVoltage.setText(switchCheck[1]);
+                    break;
+                case "current":
+                    textViewCurrent.setText(switchCheck[1]);
+                    break;
+                case "resistance":
+                    textViewCurrent.setText(switchCheck[1]);
+                    break;
+                case "inductance":
+                    textViewCurrent.setText(switchCheck[1]);
+                    break;
+                case "capacitance":
+                    textViewCapacitance.setText(switchCheck[1]);
+                    break;
+            }
             super.onPostExecute(result);
         }
     }
