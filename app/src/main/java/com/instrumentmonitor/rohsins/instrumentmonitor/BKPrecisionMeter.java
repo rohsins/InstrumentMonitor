@@ -14,7 +14,6 @@ import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
 public class BKPrecisionMeter extends Sockets {
 
     TextView textViewVoltage;
@@ -25,14 +24,14 @@ public class BKPrecisionMeter extends Sockets {
     Switch sync;
     EditText editTextUpdateRate;
 
-    int i;
+//    int i;
 
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            textViewResistance.setText(String.valueOf(i));
-            i++;
-            exchangeData("sendMeAllParameters");
+//            textViewResistance.setText(String.valueOf(i));
+//            i++;
+            exchangeData("0d00"); // 0d00 : sendMeAllParameters
         }
     };
 
@@ -88,6 +87,18 @@ public class BKPrecisionMeter extends Sockets {
         }
         sync.setChecked(settings.getBoolean("SYNCSWITCH", false));
 
+
+        /*
+         to fix app crash because of calling stopTransfer() before startTransfer();
+         not a good fix. work on it later.
+         */
+        startTransfer(settings.getInt("UPDATERATE", 1000));
+        stopTransfer();
+
+        if (settings.getBoolean("SYNCSWITCH", false)) {
+            startTransfer(settings.getInt("UPDATERATE", 1000));
+        }
+
         sync.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView,
                                          boolean isChecked) {
@@ -97,25 +108,51 @@ public class BKPrecisionMeter extends Sockets {
                 editor.putBoolean("SYNCSWITCH", sync.isChecked());
                 editor.commit();
                 //sync.setEnabled(settings.getBoolean("SYNCSWITCH", false));
+
                 if (!settings.getBoolean("SYNCSWITCH", false)) {
+                    stopTransfer();
                     editTextUpdateRate.setEnabled(true);
 //                    exchangeData("SYNCOFF");
-                    textViewVoltage.setText("SyncOff");
-                    stopTransfer();
+//                    textViewVoltage.setText("SyncOff");
                 } else if (settings.getBoolean("SYNCSWITCH", false)) {
+                    startTransfer(settings.getInt("UPDATERATE", 1000));
                     editTextUpdateRate.setEnabled(false);
 //                    exchangeData("SYNCON");
-                    textViewVoltage.setText("SyncOn");
-                    startTransfer(settings.getInt("UPDATERATE", 1000));
+//                    textViewVoltage.setText("SyncOn");
                 }
             }
         });
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        stopTransfer();
+    }
+
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        startTransfer(settings.getInt("UPDATERATE", 1000));
+//    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        stopTransfer();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        stopTransfer();
+
+    }
+
+    @Override
     public void onOptionsMenuClosed(Menu menu) {
         super.onOptionsMenuClosed(menu);
-        textViewVoltage.setText("Syti");
+//        textViewVoltage.setText("Syti"); // just for testing if it enters in menu or not
     }
 
     @Override

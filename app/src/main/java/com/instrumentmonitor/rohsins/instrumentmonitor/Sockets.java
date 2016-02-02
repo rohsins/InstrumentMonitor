@@ -115,7 +115,7 @@ public class Sockets extends Activity {
             if(!errorResponse.equals( "IOException: java.io.EOFException") && !errorResponse.equals("")) {
                 Toast.makeText(Sockets.this, errorResponse, Toast.LENGTH_SHORT).show();
             }
-            textViewInductance.setText(response);
+//            textViewInductance.setText(response);
 
             String switchCheck[] = null;
             switchCheck = response.split("-");
@@ -127,10 +127,10 @@ public class Sockets extends Activity {
                     textViewCurrent.setText(switchCheck[1]);
                     break;
                 case "resistance":
-                    textViewCurrent.setText(switchCheck[1]);
+                    textViewResistance.setText(switchCheck[1]);
                     break;
                 case "inductance":
-                    textViewCurrent.setText(switchCheck[1]);
+                    textViewInductance.setText(switchCheck[1]);
                     break;
                 case "capacitance":
                     textViewCapacitance.setText(switchCheck[1]);
