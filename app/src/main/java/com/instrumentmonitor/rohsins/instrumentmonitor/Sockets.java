@@ -118,7 +118,7 @@ public class Sockets extends Activity {
 //            textViewInductance.setText(response);
 
             String switchCheck[] = null;
-            switchCheck = response.split("-");
+            switchCheck = response.split("-@=");
             switch (switchCheck[0]) {
                 case "voltage":
                     textViewVoltage.setText(switchCheck[1]);
