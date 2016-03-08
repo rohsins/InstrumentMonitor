@@ -120,19 +120,19 @@ public class Sockets extends Activity {
             String switchCheck[] = null;
             switchCheck = response.split("-@=");
             switch (switchCheck[0]) {
-                case "voltage":
+                case "0xd0":
                     textViewVoltage.setText(switchCheck[1]);
                     break;
-                case "current":
+                case "0xd1":
                     textViewCurrent.setText(switchCheck[1]);
                     break;
-                case "resistance":
+                case "0xd2":
                     textViewResistance.setText(switchCheck[1]);
                     break;
-                case "inductance":
+                case "0xd3":
                     textViewInductance.setText(switchCheck[1]);
                     break;
-                case "capacitance":
+                case "0xd4":
                     textViewCapacitance.setText(switchCheck[1]);
                     break;
             }

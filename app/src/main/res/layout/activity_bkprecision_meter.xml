@@ -10,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textParam"
+        android:textColor = "#000000"
         android:textStyle="bold"
         android:textSize="22sp"
         android:layout_marginLeft="0dp"
@@ -19,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textValue"
+        android:textColor = "#000000"
         android:textStyle="bold"
         android:textSize="22sp"
         android:layout_alignParentRight="true"
@@ -29,6 +31,8 @@
         android:layout_height="wrap_content"
         android:text="@string/textParam1"
         android:textSize="18sp"
+        android:clickable="true"
+        android:onClick="volFunc"
         android:layout_below="@id/textViewParam0"
         android:layout_marginTop="10dp"/>
 
@@ -46,7 +50,10 @@
         android:layout_height="wrap_content"
         android:text="@string/textParam2"
         android:textSize="18sp"
-        android:layout_below="@id/textViewParam1"/>
+        android:clickable="true"
+        android:onClick="curFunc"
+        android:layout_below="@id/textViewParam1"
+        android:layout_marginTop="4dp"/>
 
     <TextView android:id="@+id/textViewValue2"
         android:layout_width="wrap_content"
@@ -54,14 +61,18 @@
         android:text="@string/textValueDefault"
         android:textSize="18sp"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/textViewValue1"/>
+        android:layout_below="@id/textViewValue1"
+        android:layout_marginTop="4dp"/>
 
     <TextView android:id="@+id/textViewParam3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textParam3"
         android:textSize="18sp"
-        android:layout_below="@id/textViewParam2"/>
+        android:clickable="true"
+        android:onClick="resFunc"
+        android:layout_below="@id/textViewParam2"
+        android:layout_marginTop="4dp"/>
 
     <TextView android:id="@+id/textViewValue3"
         android:layout_width="wrap_content"
@@ -69,14 +80,18 @@
         android:text="@string/textValueDefault"
         android:textSize="18sp"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/textViewValue2"/>
+        android:layout_below="@id/textViewValue2"
+        android:layout_marginTop="4dp"/>
 
     <TextView android:id="@+id/textViewParam4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textParam4"
         android:textSize="18sp"
-        android:layout_below="@id/textViewParam3"/>
+        android:clickable="true"
+        android:onClick="indFunc"
+        android:layout_below="@id/textViewParam3"
+        android:layout_marginTop="4dp"/>
 
     <TextView android:id="@+id/textViewValue4"
         android:layout_width="wrap_content"
@@ -84,14 +99,18 @@
         android:text="@string/textValueDefault"
         android:textSize="18sp"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/textViewValue3"/>
+        android:layout_below="@id/textViewValue3"
+        android:layout_marginTop="4dp"/>
 
     <TextView android:id="@+id/textViewParam5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textParam5"
         android:textSize="18sp"
-        android:layout_below="@id/textViewParam4"/>
+        android:clickable="true"
+        android:onClick="capFunc"
+        android:layout_below="@id/textViewParam4"
+        android:layout_marginTop="4dp"/>
 
     <TextView android:id="@+id/textViewValue5"
         android:layout_width="wrap_content"
@@ -99,7 +118,25 @@
         android:text="@string/textValueDefault"
         android:textSize="18sp"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/textViewValue4"/>
+        android:layout_below="@id/textViewValue4"
+        android:layout_marginTop="4dp"/>
+
+    <TextView android:id="@+id/textViewParam6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textParam6"
+        android:textSize="18sp"
+        android:onClick="capFunc"
+        android:layout_below="@id/textViewParam5"
+        android:layout_marginTop="40dp"/>
+
+    <TextView android:id="@+id/textViewValue6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/textViewValue5"
+        android:layout_marginTop="40dp"/>
 
     <TextView android:id="@+id/textViewSync"
         android:layout_width="wrap_content"
@@ -109,7 +146,7 @@
         android:textStyle="bold"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginBottom="10dp"/>
 
     <Switch
         android:id="@+id/syncSwitch"
@@ -118,7 +155,7 @@
         android:background="@drawable/button_style"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="2dp"
         android:clickable="true"/>
 
     <TextView android:id="@+id/textViewUpdateRate"

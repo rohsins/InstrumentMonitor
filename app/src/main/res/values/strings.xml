@@ -5,12 +5,13 @@
     <string name="title">InstrumentMonitor</string>
     <string name="buttonOne">BK Precision Meter</string>
     <string name="title_activity_bkprecision_meter">BKPrecisionMeter</string>
-    <string name="textParam">Param</string>
+    <string name="textParam">Parameters</string>
     <string name="textParam1">Voltage</string>
     <string name="textParam2">Current</string>
     <string name="textParam3">Resistance</string>
     <string name="textParam4">Inductance</string>
     <string name="textParam5">Capacitance</string>
+    <string name="textParam6">Active Param</string>
     <string name="textValue">Value</string>
     <string name="textViewSync">Sync</string>
     <string name="updateRate">Update Rate</string>

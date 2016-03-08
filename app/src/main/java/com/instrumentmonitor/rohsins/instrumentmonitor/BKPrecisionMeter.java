@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -21,8 +22,11 @@ public class BKPrecisionMeter extends Sockets {
     TextView textViewResistance;
     TextView textViewInductance;
     TextView textViewCapacitance;
+    TextView textViewActiveParamValue;
     Switch sync;
     EditText editTextUpdateRate;
+
+    static int paramValueCheck = 0;
 
 //    int i;
 
@@ -31,7 +35,23 @@ public class BKPrecisionMeter extends Sockets {
         public void run() {
 //            textViewResistance.setText(String.valueOf(i));
 //            i++;
-            exchangeData("0d00"); // 0d00 : sendMeAllParameters
+            switch (paramValueCheck) {
+                case 0:
+                    exchangeData("0xd0");
+                    break;
+                case 1:
+                    exchangeData("0xd1");
+                    break;
+                case 2:
+                    exchangeData("0xd2");
+                    break;
+                case 3:
+                    exchangeData("0xd3");
+                    break;
+                case 4:
+                    exchangeData("0xd4");
+                    break;
+            }
         }
     };
 
@@ -74,6 +94,7 @@ public class BKPrecisionMeter extends Sockets {
         textViewResistance = (TextView) findViewById(R.id.textViewValue3);
         textViewInductance = (TextView) findViewById(R.id.textViewValue4);
         textViewCapacitance = (TextView) findViewById(R.id.textViewValue5);
+        textViewActiveParamValue = (TextView) findViewById(R.id.textViewValue6);
         sync = (Switch) findViewById(R.id.syncSwitch);
         editTextUpdateRate = (EditText) findViewById(R.id.editTextUpdateRate);
 
@@ -146,6 +167,35 @@ public class BKPrecisionMeter extends Sockets {
     public void onDestroy() {
         super.onDestroy();
         stopTransfer();
+
+    }
+
+    public void volFunc(View view) {
+        paramValueCheck = 0;
+        textViewActiveParamValue.setText("Voltage");
+    }
+
+    public void curFunc(View view) {
+        paramValueCheck = 1;
+        textViewActiveParamValue.setText("Current");
+
+    }
+
+    public void resFunc(View view) {
+        paramValueCheck = 2;
+        textViewActiveParamValue.setText("Resistance");
+
+    }
+
+    public void indFunc(View view) {
+        paramValueCheck = 3;
+        textViewActiveParamValue.setText("Inductance");
+
+    }
+
+    public void capFunc(View view) {
+        paramValueCheck = 4;
+        textViewActiveParamValue.setText("Capacitance");
 
     }
 
