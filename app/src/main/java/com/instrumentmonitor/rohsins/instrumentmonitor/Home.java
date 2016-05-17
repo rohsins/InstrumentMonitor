@@ -37,4 +37,9 @@ public class Home extends Sockets {
         Intent intentBKPrecisionMultimeter = new Intent(this, BKPrecisionMeter.class);
         startActivity(intentBKPrecisionMultimeter);
     }
+
+    public void serialViewer(View view) {
+        Intent intentSerialViewer = new Intent(this, SerialViewer.class);
+        startActivity(intentSerialViewer);
+    }
 }
