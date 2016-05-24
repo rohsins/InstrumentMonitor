@@ -24,6 +24,7 @@ public class Sockets extends Activity {
     TextView textViewResistance;
     TextView textViewInductance;
     TextView textViewCapacitance;
+    TextView serialViewerTextView;
 
     public void on_create_func() {
         SharedPreferences settings = getSharedPreferences("msettings",0);
@@ -53,6 +54,7 @@ public class Sockets extends Activity {
             textViewResistance = (TextView) findViewById(R.id.textViewValue3);
             textViewInductance = (TextView) findViewById(R.id.textViewValue4);
             textViewCapacitance = (TextView) findViewById(R.id.textViewValue5);
+            serialViewerTextView = (TextView) findViewById(R.id.serialViewerTextView01);
         }
 
         @Override
@@ -135,6 +137,18 @@ public class Sockets extends Activity {
                 case "0xd4":
                     textViewCapacitance.setText(switchCheck[1]);
                     break;
+                case "0xA0":
+                    serialViewerTextView.setText(switchCheck[1]);
+                    break;
+                case "IOException: ":
+                    if(switchCheck[1].equals("java.io.EOFException")) {
+                        break;
+                    }
+                    Toast.makeText(Sockets.this, "Error: " + switchCheck[1], Toast.LENGTH_SHORT).show();
+                    break;
+//                default:
+//                    if(switchCheck[1] != null) Toast.makeText(Sockets.this, switchCheck[1], Toast.LENGTH_SHORT).show(); \\ this line crashes the app, look it afterwards
+//                    break;
             }
             super.onPostExecute(result);
         }
