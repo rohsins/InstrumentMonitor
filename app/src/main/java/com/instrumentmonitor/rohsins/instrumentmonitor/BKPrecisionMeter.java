@@ -102,7 +102,7 @@ public class BKPrecisionMeter extends Sockets {
         on_create_func();
         paramValueCheck = 0;
         textViewActiveParamValue.setText("Voltage");
-        editTextUpdateRate.setText(String.valueOf(settings.getInt("UPDATERATE", 1)));
+        editTextUpdateRate.setText(String.valueOf(settings.getInt("UPDATERATE", 1000)));
         if (!settings.getBoolean("SYNCSWITCH", false)) {
             editTextUpdateRate.setEnabled(true);
         } else if (settings.getBoolean("SYNCSWITCH", false)) {

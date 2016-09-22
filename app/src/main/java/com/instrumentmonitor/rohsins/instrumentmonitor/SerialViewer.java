@@ -67,7 +67,7 @@ public class SerialViewer extends Sockets {
 
         SharedPreferences settings = getSharedPreferences("msettings", 0);
         on_create_func();
-        editTextUpdateRate.setText(String.valueOf(settings.getInt("UPDATERATE", 1)));
+        editTextUpdateRate.setText(String.valueOf(settings.getInt("UPDATERATE", 1000)));
         if (!settings.getBoolean("SYNCSWITCH", false)) {
             editTextUpdateRate.setEnabled(true);
         } else if (settings.getBoolean("SYNCSWITCH", false)) {
